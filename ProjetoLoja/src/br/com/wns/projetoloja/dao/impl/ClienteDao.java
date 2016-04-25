@@ -24,10 +24,10 @@ public class ClienteDao implements IClienteDao{
 
             st.setString(1, cliente.getCpf()); //diciona valores as ?
             st.setString(2, cliente.getNome());
-            st.setString(3, cliente.getTelefone());
+           // st.setString(3, cliente.getTelefone());
             st.setString(4, cliente.getEndereco().getRua());
-            st.setInt(5, cliente.getEndereco().getNumero());
-            st.setDate(6, new java.sql.Date(cliente.getDataNasc().getTime())); //erro akii
+            //st.setInt(5, cliente.getEndereco().getNumero());
+            //st.setDate(6, new java.sql.Date(cliente.getDataNasc().getTime())); //erro akii
             
             st.executeUpdate();
             con.close();
@@ -73,13 +73,13 @@ public class ClienteDao implements IClienteDao{
                 cliente.setId(rs.getLong("id"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setNome(rs.getString("nome"));
-                cliente.setTelefone(rs.getString("telefone"));
+              //  cliente.setTelefone(rs.getString("telefone"));
                 endereco.setRua(rs.getString("rua"));
-                endereco.setNumero(rs.getInt("numero"));
+               // endereco.setNumero(rs.getInt("numero"));
                 cliente.setEndereco(endereco);
                 java.util.Date dataUtil = rs.getDate("data_nascimento");
                 if(dataUtil != null){
-                 cliente.setDataNasc(new java.util.Date(dataUtil.getTime()));
+                // cliente.setDataNasc(new java.util.Date(dataUtil.getTime()));
                 }
                
             }
@@ -100,10 +100,10 @@ public class ClienteDao implements IClienteDao{
 
             st.setString(1, cliente.getCpf()); //diciona valores as ?
             st.setString(2, cliente.getNome());
-            st.setString(3, cliente.getTelefone());
+           // st.setString(3, cliente.getTelefone());
             st.setString(4, cliente.getEndereco().getRua());
-            st.setInt(5, cliente.getEndereco().getNumero());
-            st.setDate(6, new java.sql.Date(cliente.getDataNasc().getTime()));
+           // st.setInt(5, cliente.getEndereco().getNumero());
+           // st.setDate(6, new java.sql.Date(cliente.getDataNasc().getTime()));
             st.setLong(7, cliente.getId());
             
             st.executeUpdate();
@@ -131,12 +131,12 @@ public class ClienteDao implements IClienteDao{
                 cliente.setId(rs.getLong("id"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setNome(rs.getString("nome"));
-                cliente.setTelefone(rs.getString("telefone"));
+                //cliente.setTelefone(rs.getString("telefone"));
                 endereco.setRua(rs.getString("rua"));
-                endereco.setNumero(rs.getInt("numero"));
+                //endereco.setNumero(rs.getInt("numero"));
                 java.util.Date dataUtil = rs.getDate("data_nascimento");
                 if(dataUtil != null){
-                    cliente.setDataNasc(new java.util.Date(dataUtil.getTime()));
+                   // cliente.setDataNasc(new java.util.Date(dataUtil.getTime()));
                 }
                 listaClientes.add(cliente);
             }
@@ -146,5 +146,10 @@ public class ClienteDao implements IClienteDao{
             e.printStackTrace();
             throw new Exception("erro ao buscar cliente");
         }
+    }
+
+    @Override
+    public Cliente buscar(long id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
